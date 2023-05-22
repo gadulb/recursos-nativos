@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     },
   });
 
-export default function DeviceInfo() {
+export default function DeviceInfo({ navigation }) {
     return(
         <View>
             {/* Título */}

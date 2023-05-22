@@ -21,8 +21,9 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function BatteryInfo() {
+export default function BatteryInfo({navigation}) {
     const [nivelBateria, setNivelBateria] = useState();
+    const [nivelCor, setNivelCor] = useState('green');
 
     async function atualizarTudo(){
         bateria()
@@ -31,18 +32,33 @@ export default function BatteryInfo() {
     async function bateria(){
         const nivel = await Battery.getBatteryLevelAsync()
         setNivelBateria(nivel * 100)
+        if(nivelBateria >= 80){
+            setNivelCor('green')
+        }else{
+            if(nivelBateria >= 50){
+                setNivelCor('yellow')
+            } else{
+                if(nivelBateria >= 30){
+                    setNivelCor('orange')
+                } else{
+                    if(nivelBateria >= 1){
+                        setNivelCor('red')
+                    }
+                }
+            }
+        }
     }
 
     useEffect(() => {
-        bateria()   
-        });
+        bateria() 
+    }, [nivelBateria]);
 
     return (
         <View style={styles.container}>
             <MyHeader title={'Informações da Bateria'}/>
             <View style={styles.info}>
                 <Text style={styles.infoBateria}>{nivelBateria} %</Text> 
-                <View style={{height: 20, width: nivelBateria, backgroundColor: 'green'}}/>
+                <View style={{height: 20, width: nivelBateria, backgroundColor: nivelCor}}/>
                 <Button 
                     title="Atualizar"
                     onPress={atualizarTudo}
