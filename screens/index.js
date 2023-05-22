@@ -3,10 +3,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./HomeScreen";
 import BatteryInfo from "./BatteryInfo";
 import DeviceInfo from "./DeviceInfo";
+import Footer from "../components/Footer";
 
 const Stack = createNativeStackNavigator();
 
-export default function RootNavigation() {
+export default function RootNavigation({navigation}) {
     return (
         <NavigationContainer>
             <Stack.Navigator>
@@ -21,6 +22,10 @@ export default function RootNavigation() {
                 <Stack.Screen
                     name="DeviceInfo"
                     component={DeviceInfo}
+                    options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Footer"
+                    component={Footer}
                     options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>

@@ -1,13 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import * as Device from 'expo-device';
+import Footer from "../components/Footer";
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        gap: 10,
+      },
     titulo: {
         fontSize: 30,  
         fontWeight: "bold",
         textAlign: "center",
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 10,
+        marginBottom: 10,
         padding: 10,
         backgroundColor: '#606',
         color: 'white'
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
 
 export default function DeviceInfo({ navigation }) {
     return(
-        <View>
+        <View style={styles.container}>
             {/* Título */}
             <Text style={styles.titulo}>
                 Informações do Aparelho
@@ -56,6 +61,7 @@ export default function DeviceInfo({ navigation }) {
             <Text style={styles.topico}>
                 A arquitetura do aparelho é: {Device.osBuildId}
             </Text>
+            <Footer />
         </View>
     )
 }
