@@ -1,5 +1,4 @@
-
-import { Button, StyleSheet, View } from "react-native";
+import { Button, View } from "react-native";
 import MyHeader from "../components/MyHeader";
 
 export default function HomeScreen({navigation}) {
@@ -7,6 +6,7 @@ export default function HomeScreen({navigation}) {
         <View>
             <MyHeader title={'Home'}/>
             <Button title="MOSTRAR BATERIA" onPress={() => navigation.navigate("BatteryInfo")}/>
+            <Button title="MOSTRAR INFORMAÇÕES" onPress={() => navigation.navigate("DeviceInfo")}/>
         </View>
     )
 }
