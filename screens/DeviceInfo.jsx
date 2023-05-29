@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Device from "expo-device";
 import Footer from "../components/Footer";
 import { ScrollView } from "react-native";
+import MyHeader from "../components/MyHeader";
 
 const styles = StyleSheet.create({
   container: {
@@ -36,7 +37,7 @@ export default function DeviceInfo({ navigation }) {
     <View style={styles.container}>
       <ScrollView>
         {/* Título */}
-        <Text style={styles.titulo}>Informações do Aparelho</Text>
+        <MyHeader title="Informações do Aparelho"/>
         <View style={{ alignItems: "center" }}>
           {/* Informações do aparelho */}
           <Text style={styles.topico}>

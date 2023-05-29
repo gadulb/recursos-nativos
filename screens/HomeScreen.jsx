@@ -1,12 +1,31 @@
-import { Button, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
 import MyHeader from "../components/MyHeader";
+import { Text } from "react-native-paper";
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      gap: 10,
+    },
+    info: {
+      flex: 1,
+      gap: 20,
+      padding: 20,
+      alignSelf: "center",
+      justifyContent: "center",
+    },
+});
+
 
 export default function HomeScreen({navigation}) {
     return(
-        <View>
+        <View style={styles.container}>
             <MyHeader title={'Home'}/>
-            <Button title="MOSTRAR BATERIA" onPress={() => navigation.navigate("BatteryInfo")}/>
-            <Button title="MOSTRAR INFORMAÇÕES" onPress={() => navigation.navigate("DeviceInfo")}/>
+            <View style={styles.info}>
+                <Button title="MOSTRAR BATERIA" onPress={() => navigation.navigate("BatteryInfo")}/>
+                <Button title="MOSTRAR INFORMAÇÕES" onPress={() => navigation.navigate("DeviceInfo")}/>
+                <Button title="MOSTRAR ORIENTAÇÃO" onPress={() => navigation.navigate("MyScreenOrientation")}/>
+            </View>
         </View>
     )
 }
