@@ -84,15 +84,17 @@ export default function MyScreenOrientation({ navigation }) {
     <View style={styles.container}>
         {/* Título */}
         <MyHeader title="Orientação de Tela"/>
-        <View style={styles.info}>
-          <Button style={styles.button} title="PADRÃO" onPress={padrao}/>
-          <Button style={styles.button} title="FORÇAR DEITAR DIREITA" onPress={direita}/>
-          <Button style={styles.button} title="FORÇAR DEITAR ESQUERDA" onPress={esquerda}/>
-          <Button style={styles.button} title="FORÇAR NORMAL" onPress={normal}/>
-          <Button style={styles.button} title="FORÇAR INVERTER" onPress={inverter}/>
-          <Button style={styles.button} title="FORÇAR NORMAL2" onPress={normal2}/>
-          <Button style={styles.button} title="INFORMAR" onPress={informar}/>
-        </View>
+        <ScrollView>
+          <View style={styles.info}>
+            <Button style={styles.button} title="PADRÃO" onPress={padrao}/>
+            <Button style={styles.button} title="FORÇAR DEITAR DIREITA" onPress={direita}/>
+            <Button style={styles.button} title="FORÇAR DEITAR ESQUERDA" onPress={esquerda}/>
+            <Button style={styles.button} title="FORÇAR NORMAL" onPress={normal}/>
+            <Button style={styles.button} title="FORÇAR INVERTER" onPress={inverter}/>
+            <Button style={styles.button} title="FORÇAR NORMAL2" onPress={normal2}/>
+            <Button style={styles.button} title="INFORMAR" onPress={informar}/>
+          </View>
+        </ScrollView>
         <Footer />
     </View>
   );
