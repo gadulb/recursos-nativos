@@ -37,6 +37,16 @@ const styles = StyleSheet.create({
   }
 });
 
+const orientacoes = [
+  "PADRÃO",
+  "FORÇAR DEITAR DIREITA",
+  "FORÇAR DEITAR ESQUERDA",
+  "FORÇAR NORMAL",
+  "FORÇAR INVERTER",
+  "FORÇAR NORMAL2",
+  "INFORMAR",
+];
+
 async function padrao(){
   await ScreenOrientation.lockAsync(
     ScreenOrientation.OrientationLock.DEFAULT
@@ -75,7 +85,9 @@ async function normal2(){
 
 async function informar(){
   await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.OTHER
+    ScreenOrientation.getOrientationAsync(
+      console.log(orientacoes[ScreenOrientation.OrientationLock.UNKNOWN])
+    )
   );
 }
 
