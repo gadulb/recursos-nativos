@@ -5,6 +5,7 @@ import BatteryInfo from "./BatteryInfo";
 import DeviceInfo from "./DeviceInfo";
 import Footer from "../components/Footer";
 import MyScreenOrientation from "./MyScreenOrientation";
+import Notify from "./Notify";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,10 @@ export default function RootNavigation({navigation}) {
                 <Stack.Screen
                     name="MyScreenOrientation"
                     component={MyScreenOrientation}
+                    options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Notify"
+                    component={Notify}
                     options={{ headerShown: false }} />
                 <Stack.Screen
                     name="Footer"
