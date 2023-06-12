@@ -74,17 +74,50 @@ export default function Notify({ navigation }) {
     setExpoToken(token);
   }
 
-    async function NomeAparelho() {
-    const token = await Notifications.scheduleNotificationAsync({
-        content: {
-            title: "Nome do Aparelho",
-            subtitle: "Subtitulo",
-            body: `Nome do aparelho: ${Device.deviceName}`,
-        },
-        trigger: { seconds: 2 },
-    });
-    setExpoToken(token);
+  async function NomeAparelho() {
+  const token = await Notifications.scheduleNotificationAsync({
+      content: {
+          title: "Nome do Aparelho",
+          subtitle: "Subtitulo",
+          body: `Nome do aparelho: ${Device.deviceName}`,
+      },
+      trigger: { seconds: 2 },
+  });
+  setExpoToken(token);
+  }
+
+  const ultimaNotificacao = Notifications.useLastNotificationResponse();
+
+  async function exibirAlerta() {
+    const idToken = ultimaNotificacao.notification.request.identifier;
+    alert('Atenção! ' + idToken)
+    console.log(idToken);
+  }
+  
+  useEffect(() => {
+    exibirAlerta();
+  }, [ultimaNotificacao]);
+
+  async function lerNotificacao() {
+    const ultimaNotificacao = await Notifications.getLastNotificationResponseAsync();
+    alert(ultimaNotificacao.notification.request.identifier);
+    console.log(ultimaNotificacao);
+  }
+  
+  async function mudarPagina() {
+    const idToken = ultimaNotificacao.notification.request.identifier;
+    alert('Atenção! ' + idToken)
+    console.log(idToken);
+    if (idToken == expoToken) {
+      navigation.navigate("Home");
     }
+  }
+  
+  useEffect(() => {
+    mudarPagina();
+  }, [ultimaNotificacao]);
+
+  
 
   return (
     <View style={styles.container}>
@@ -96,8 +129,8 @@ export default function Notify({ navigation }) {
         <Button title="Nivel Bateria" onPress={async () => NivelBateria()} />
         <Text>Nome do aparelho: {Device.deviceName}</Text>
         <Button title="Nome do aparelho" onPress={async () => NomeAparelho()} />
-        <Button title="Ter última notificação clicada" />
-        <Button title="Ter notificações não clicadas" />
+        <Button title="Última notificação" onPress={async () => lerNotificacao()}/>
+        <Button title="Mudar Página" onPress={async () => mudarPagina()}/>
       </View>
       <Footer />
     </View>
