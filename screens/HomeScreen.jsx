@@ -22,10 +22,12 @@ export default function HomeScreen({navigation}) {
         <View style={styles.container}>
             <MyHeader title={'Home'}/>
             <View style={styles.info}>
+                <Button title="INÍCIO" onPress={() => navigation.navigate("Inicio")}/>
                 <Button title="MOSTRAR BATERIA" onPress={() => navigation.navigate("BatteryInfo")}/>
                 <Button title="MOSTRAR INFORMAÇÕES" onPress={() => navigation.navigate("DeviceInfo")}/>
                 <Button title="MOSTRAR ORIENTAÇÃO" onPress={() => navigation.navigate("MyScreenOrientation")}/>
                 <Button title="MOSTRAR NOTIFICAÇÃO" onPress={() => navigation.navigate("Notify")}/>
+                <Button title="MOSTRAR CONTATOS" onPress={() => navigation.navigate("ContactsInfo")}/>
             </View>
         </View>
     )

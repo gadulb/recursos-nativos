@@ -6,6 +6,8 @@ import DeviceInfo from "./DeviceInfo";
 import Footer from "../components/Footer";
 import MyScreenOrientation from "./MyScreenOrientation";
 import Notify from "./Notify";
+import Inicio from "./Inicio";
+import ContactsInfo from "./ContactsInfo";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,10 @@ export default function RootNavigation({navigation}) {
                 <Stack.Screen
                     name="Home"
                     component={HomeScreen}
+                    options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Inicio"
+                    component={Inicio}
                     options={{ headerShown: false }} />
                 <Stack.Screen
                     name="BatteryInfo"
@@ -36,6 +42,10 @@ export default function RootNavigation({navigation}) {
                 <Stack.Screen
                     name="Footer"
                     component={Footer}
+                    options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="ContactsInfo"
+                    component={ContactsInfo}
                     options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
