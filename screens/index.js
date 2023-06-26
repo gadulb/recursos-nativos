@@ -8,6 +8,7 @@ import MyScreenOrientation from "./MyScreenOrientation";
 import Notify from "./Notify";
 import Inicio from "./Inicio";
 import ContactsInfo from "./ContactsInfo";
+import Items from "../components/Items";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,10 @@ export default function RootNavigation({navigation}) {
                     name="ContactsInfo"
                     component={ContactsInfo}
                     options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Items"
+                    component={Items}
+                    options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>
     );
