@@ -70,19 +70,31 @@ export default function ContactsInfo({ navigation }) {
     setFilteredContacts(filtered);
   };
 
-  /*
-  async function notificarExpo() {
-    const token = await Notifications.scheduleNotificationAsync({
-      content: {
-        title: contact,
-        subtitle: contact,
-        body: contact,
-      },
-      trigger: { seconds: 2 },
-    });
-    setExpoToken(token);
-  }
-  */
+  const handleContactPress = useCallback((name, number) => {
+    sendNotification(name, number);
+  }, []);
+
+  const sendNotification = async (name, number) => {
+    try {
+      const notificationContent = {
+        title: "Novo contato",
+        body: `Nome: ${name}\nNúmero: ${number}`,
+      };
+
+      const puxa = await Notifications.scheduleNotificationAsync({
+        content: {notificationContent},
+        trigger: {seconds: 2}
+      });
+
+      if (puxa) {
+        console.log("Notificação agendada com sucesso");
+      } else {
+        console.log("Falha ao agendar notificação");
+      }
+    } catch (error) {
+      console.log("Erro ao enviar notificação:", error);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -101,7 +113,9 @@ export default function ContactsInfo({ navigation }) {
               style={{ flex: 1, gap: 10 }}
               data={filteredContacts}
               keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => <Items item={item} />}
+              renderItem={({ item }) => (
+                <Items item={item} handleContactPress={handleContactPress} />
+              )}
             />
           ) : (
             <Text>Nenhum contato encontrado.</Text>
