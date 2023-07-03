@@ -79,7 +79,7 @@ export default function Notify({ navigation }) {
       content: {
           title: "Nome do Aparelho",
           subtitle: "Subtitulo",
-          body: `Nome do aparelho: ${Device.deviceName}`,
+          body: `Seu ${Device.deviceName} é excelente!`,
       },
       trigger: { seconds: 2 },
   });

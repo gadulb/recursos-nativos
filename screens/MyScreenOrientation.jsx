@@ -3,18 +3,16 @@ import Footer from "../components/Footer";
 import { ScrollView } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import MyHeader from "../components/MyHeader";
+import { useState } from "react";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    gap: 10,
-  },
   info: {
     flex: 1,
     gap: 20,
     padding: 20,
     alignSelf: "center",
     justifyContent: "center",
+    backgroundColor: "white",
   },
   titulo: {
     fontSize: 30,
@@ -37,63 +35,75 @@ const styles = StyleSheet.create({
   }
 });
 
-const orientacoes = [
-  "PADRÃO",
-  "FORÇAR DEITAR DIREITA",
-  "FORÇAR DEITAR ESQUERDA",
-  "FORÇAR NORMAL",
-  "FORÇAR INVERTER",
-  "FORÇAR NORMAL2",
-  "INFORMAR",
-];
-
-async function padrao(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.DEFAULT
-  );
-}
-
-async function direita(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT
-  );
-}
-
-async function esquerda(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.LANDSCAPE_LEFT
-  );
-}
-
-async function normal(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.PORTRAIT_UP
-  );
-}
-
-async function inverter(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.PORTRAIT_DOWN
-  );
-}
-
-async function normal2(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.OrientationLock.PORTRAIT
-  );
-}
-
-async function informar(){
-  await ScreenOrientation.lockAsync(
-    ScreenOrientation.getOrientationAsync(
-      console.log(orientacoes[ScreenOrientation.OrientationLock.UNKNOWN])
-    )
-  );
-}
-
 export default function MyScreenOrientation({ navigation }) {
+  const orientacoes = [
+    "PADRÃO",
+    "FORÇAR DEITAR DIREITA",
+    "FORÇAR DEITAR ESQUERDA",
+    "FORÇAR NORMAL",
+    "FORÇAR INVERTER",
+    "FORÇAR NORMAL2",
+    "INFORMAR",
+  ];
+  
+  async function padrao(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.DEFAULT,
+      setCoresOrientacoes("red")
+    );
+  }
+  
+  async function direita(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT,
+      setCoresOrientacoes("verde")
+    );
+  }
+  
+  async function esquerda(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.LANDSCAPE_LEFT,
+      setCoresOrientacoes("verde")
+    );
+  }
+  
+  async function normal(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.PORTRAIT_UP,
+      setCoresOrientacoes("red")
+    );
+  }
+  
+  async function inverter(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.PORTRAIT_DOWN,
+      setCoresOrientacoes("white")
+    );
+  }
+  
+  async function normal2(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.OrientationLock.PORTRAIT,
+      setCoresOrientacoes("red")
+    );
+  }
+  
+  async function informar(){
+    await ScreenOrientation.lockAsync(
+      ScreenOrientation.getOrientationAsync(
+        console.log(orientacoes[ScreenOrientation.OrientationLock.UNKNOWN])
+      )
+    );
+  }
+
+  const [coresOrientacoes, setCoresOrientacoes] = useState();
+
   return (
-    <View style={styles.container}>
+    <View style={{
+      flex: 1,
+      gap: 10,
+      backgroundColor: coresOrientacoes,
+    }}>
         {/* Título */}
         <MyHeader title="Orientação de Tela"/>
         <ScrollView>
