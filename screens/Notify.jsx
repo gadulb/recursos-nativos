@@ -117,8 +117,6 @@ export default function Notify({ navigation }) {
     mudarPagina();
   }, [ultimaNotificacao]);
 
-  
-
   return (
     <View style={styles.container}>
       <MyHeader title={"Notificações"} />
