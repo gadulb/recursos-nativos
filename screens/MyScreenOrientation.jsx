@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import { ScrollView } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import MyHeader from "../components/MyHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const styles = StyleSheet.create({
   info: {
@@ -56,14 +56,14 @@ export default function MyScreenOrientation({ navigation }) {
   async function direita(){
     await ScreenOrientation.lockAsync(
       ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT,
-      setCoresOrientacoes("verde")
+      setCoresOrientacoes("green")
     );
   }
   
   async function esquerda(){
     await ScreenOrientation.lockAsync(
       ScreenOrientation.OrientationLock.LANDSCAPE_LEFT,
-      setCoresOrientacoes("verde")
+      setCoresOrientacoes("green")
     );
   }
   
@@ -96,7 +96,10 @@ export default function MyScreenOrientation({ navigation }) {
     );
   }
 
-  const [coresOrientacoes, setCoresOrientacoes] = useState();
+  const [coresOrientacoes, setCoresOrientacoes] = useState("");
+
+  useEffect(() => {
+  }, [coresOrientacoes]);
 
   return (
     <View style={{

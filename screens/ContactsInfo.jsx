@@ -70,23 +70,19 @@ export default function ContactsInfo({ navigation }) {
     setFilteredContacts(filtered);
   };
 
-  const handleContactPress = useCallback((name, number) => {
-    sendNotification(name, number);
-  }, []);
-
-  const sendNotification = async (name, number) => {
+  const handleContactPress = useCallback(async (name, number) => {
     try {
       const notificationContent = {
         title: "Novo contato",
         body: `Nome: ${name}\nNúmero: ${number}`,
       };
 
-      const puxa = await Notifications.scheduleNotificationAsync({
-        content: {notificationContent},
-        trigger: {seconds: 2}
+      const response = await Notifications.scheduleNotificationAsync({
+        content: notificationContent,
+        trigger: { seconds: 2 },
       });
 
-      if (puxa) {
+      if (response) {
         console.log("Notificação agendada com sucesso");
       } else {
         console.log("Falha ao agendar notificação");
@@ -94,7 +90,7 @@ export default function ContactsInfo({ navigation }) {
     } catch (error) {
       console.log("Erro ao enviar notificação:", error);
     }
-  };
+  }, []);
 
   return (
     <View style={styles.container}>
