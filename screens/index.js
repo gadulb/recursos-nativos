@@ -9,6 +9,7 @@ import Notify from "./Notify";
 import Inicio from "./Inicio";
 import ContactsInfo from "./ContactsInfo";
 import Items from "../components/Items";
+import Criatividade from "./Creatividade";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,10 @@ export default function RootNavigation({navigation}) {
                 <Stack.Screen
                     name="Items"
                     component={Items}
+                    options={{headerShown: false}} />
+                <Stack.Screen
+                    name="Criatividade"
+                    component={Criatividade}
                     options={{headerShown: false}} />
             </Stack.Navigator>
         </NavigationContainer>

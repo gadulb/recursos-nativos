@@ -28,6 +28,7 @@ export default function HomeScreen({navigation}) {
                 <Button title="MOSTRAR ORIENTAÇÃO" onPress={() => navigation.navigate("MyScreenOrientation")}/>
                 <Button title="MOSTRAR NOTIFICAÇÃO" onPress={() => navigation.navigate("Notify")}/>
                 <Button title="MOSTRAR CONTATOS" onPress={() => navigation.navigate("ContactsInfo")}/>
+                <Button title="MOSTRAR CRIATIVIDADE" onPress={() => navigation.navigate("Criatividade")}/>
             </View>
         </View>
     )

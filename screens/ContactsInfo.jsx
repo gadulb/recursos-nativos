@@ -77,13 +77,14 @@ export default function ContactsInfo({ navigation }) {
         body: `Nome: ${name}\nNúmero: ${number}`,
       };
 
-      const response = await Notifications.scheduleNotificationAsync({
+      const response = Notifications.scheduleNotificationAsync({
         content: notificationContent,
         trigger: { seconds: 2 },
       });
 
       if (response) {
         console.log("Notificação agendada com sucesso");
+        response;
       } else {
         console.log("Falha ao agendar notificação");
       }
