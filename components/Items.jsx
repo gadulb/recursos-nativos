@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#CCC",
     paddingBottom: 12,
+    gap: 5,
   },
   title: {
     fontSize: 18,

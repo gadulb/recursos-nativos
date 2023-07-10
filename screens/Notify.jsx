@@ -140,8 +140,8 @@ export default function Notify({ navigation }) {
   return (
     <View style={styles.container}>
       <MyHeader title={"Notificações"} />
-      <View style={styles.body}>
-        <ScrollView style={styles.body}>
+        <ScrollView>
+        <View style={styles.body}>
         <Text>Expo token: {expoToken}</Text>
         <Button title="Enviar Nootificação" onPress={async () => notificarExpo()} />
         <Text>Bateria: {nivel}</Text>
@@ -154,15 +154,21 @@ export default function Notify({ navigation }) {
           label="Digite o título da sua notificação"
           value={tituloNoti}
           onChangeText={tituloNoti => setTituloNoti(tituloNoti)}
+          mode="outlined"
+          outlineStyle="solid"
+          outlineColor="black"
         />
         <TextInput 
           label="Digite o subtítulo da sua notificação"
           value={subtituloNoti}
           onChangeText={subtituloNoti => setSubtituloNoti(subtituloNoti)}
+          mode="outlined"
+          outlineStyle="solid"
+          outlineColor="black"
         />
         <Button title="Enviar sua notificação" onPress={async () => EnvieSuaNoti()}/>
+        </View>
         </ScrollView>
-      </View>
       <Footer />
     </View>
   );
